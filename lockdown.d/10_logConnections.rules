@@ -1,0 +1,4 @@
+# Log all TCP connection attempts
+
+iptables -A INPUT -p tcp --syn -j LOG --log-prefix "CONNECTION ATTEMPT:  " --log-level info
+

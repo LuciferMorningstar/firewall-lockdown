@@ -1,0 +1,6 @@
+# Setting default drop policy
+echo "Setting default drop policy.."
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+iptables -P FORWARD DROP
+

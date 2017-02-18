@@ -1,0 +1,4 @@
+# Allow all outbound traffic
+
+iptables -A OUTPUT -o eth0 -j ACCEPT
+

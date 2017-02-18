@@ -1,0 +1,7 @@
+# Log all allowed packets.  Use LOGALLOW as the target for allowed packets.
+
+iptables -N LOGALLOW > /dev/null 2> /dev/null
+iptables -F LOGALLOW
+iptables -A LOGALLOW -m state --state NEW -j LOG --log-prefix "LOGALLOW:  "  --log-level info
+iptables -A LOGALLOW -j ACCEPT
+

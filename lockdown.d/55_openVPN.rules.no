@@ -1,0 +1,8 @@
+# Allow OpenVPN packets in and out
+iptables -A INPUT -p udp -d $SERVER_IP --dport 1194 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p udp -s $SERVER_IP --sport 1194 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+# Allow anything to or from the VPN subnet on the tun0 interface. -dwilson 10/18/2012
+iptables -A INPUT -i tun0 -s $VPNSUBNET -d $VPNIP -j ACCEPT
+iptables -A OUTPUT -o tun0 -s $VPNIP -d $VPNSUBNET -j ACCEPT
+

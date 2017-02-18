@@ -1,0 +1,7 @@
+# Allow incoming Pings from trusted networks
+iptables -A INPUT -p icmp --icmp-type 8 -s $CCEXTIP -d $SERVER_IP -j LOGALLOW
+iptables -A INPUT -p icmp --icmp-type 8 -s $OFFICE -d $SERVER_IP -j LOGALLOW
+iptables -A OUTPUT -p icmp --icmp-type 0 -s $SERVER_IP -d $CCEXTIP -j ACCEPT
+iptables -A OUTPUT -p icmp --icmp-type 0 -s $SERVER_IP -d $OFFICE -j ACCEPT
+
+

@@ -1,0 +1,12 @@
+# These rules log dropped packets.  This must come last.
+
+# Log all dropped packets.
+iptables -N LOGDROP > /dev/null 2> /dev/null
+iptables -F LOGDROP
+iptables -A LOGDROP -j LOG --log-prefix "LOGDROP:  " --log-level info
+iptables -A LOGDROP -j DROP
+
+# Send anything left to the LOGDROP chain.
+iptables -A INPUT -j LOGDROP
+iptables -A OUTPUT -j LOGDROP
+

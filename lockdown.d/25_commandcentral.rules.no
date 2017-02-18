@@ -1,0 +1,5 @@
+# Allow anything from the Command Central subnet
+
+iptables -A INPUT -s $CCSUBNET -d $SERVER_IP -j ACCEPT
+iptables -A OUTPUT -s $SERVER_IP -d $CCSUBNET -j ACCEPT
+

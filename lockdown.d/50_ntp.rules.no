@@ -1,0 +1,4 @@
+# Allow ntp with the outside world
+iptables -A OUTPUT -p udp -s $SERVER_IP --dport 123 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p udp -d $SERVER_IP --sport 123 -m state --state ESTABLISHED -j ACCEPT
+
